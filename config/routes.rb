@@ -1,4 +1,10 @@
 Kitty::Application.routes.draw do
+  get "/auth/:provider/callback", to: "users#create"
+  get "/auth/failure", to: redirect("/")
+
+  delete "signout", to: "users#destroy", as: "signout"
+  root "users#index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
