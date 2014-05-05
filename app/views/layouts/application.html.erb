@@ -7,8 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="nav-wrapper">
+    <div class="nav">
+      <% if current_user %>
+        <%= image_tag current_user.avatar, size: "30x30" %>
+        <strong><%= current_user.name %></strong>
+        <%= link_to "退出", signout_path, :method => :delete %>
+      <% else %>
+        <%= link_to "Linkedin 账户登录", "/auth/linkedin" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>
